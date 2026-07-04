@@ -1,0 +1,25 @@
+# Dependency directories
+node_modules/
+backend/node_modules/
+web/node_modules/
+
+# Environment files
+.env
+backend/.env
+
+# Flutter build artifacts and dependencies
+app/.dart_tool/
+app/build/
+app/.flutter-plugins
+app/.flutter-plugins-dependencies
+app/.metadata
+app/.packages
+app/pubspec.lock
+
+# Web build output
+web/dist/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+*.log
