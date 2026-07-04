@@ -8,7 +8,7 @@ import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import * as XLSX from 'xlsx';
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'https://pharoxrx.onrender.com/api';
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://pharoxrx-3ucy.onrender.com/api';
 
 // Custom Map Marker using Leaflet DivIcon (to avoid missing default assets issues)
 const getMarkerIcon = (color) => new L.divIcon({

@@ -35,7 +35,7 @@ const https = require('https');
 
 // Keep-alive scheduler to prevent Render free tier from sleeping
 const startKeepAlive = () => {
-  const url = 'https://pharoxrx.onrender.com/';
+  const url = 'https://pharoxrx-3ucy.onrender.com/';
   console.log(`[Keep-Alive] Initializing self-ping scheduler for: ${url}`);
   
   // Ping every 10 minutes (600,000 ms)

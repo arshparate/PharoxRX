@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ApiService {
   // Set this to your production Render URL (e.g. 'https://your-pharma-backend.onrender.com/api')
   // for hosting and APK building. Leave as null for local development.
-  static const String? productionUrl = 'https://pharoxrx.onrender.com/api';
+  static const String? productionUrl = 'https://pharoxrx-3ucy.onrender.com/api';
 
   // Dynamically resolve base URL for emulator vs web/desktop
   static String get baseUrl {
