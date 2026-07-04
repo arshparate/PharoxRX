@@ -8,7 +8,7 @@ import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import * as XLSX from 'xlsx';
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000/api';
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://pharoxrx.onrender.com/api';
 
 // Custom Map Marker using Leaflet DivIcon (to avoid missing default assets issues)
 const getMarkerIcon = (color) => new L.divIcon({
@@ -165,7 +165,7 @@ function App() {
           latitude: data.location?.coordinates[1] || 28.6139,
           longitude: data.location?.coordinates[0] || 77.2090
         });
-        setShopImagePreview(data.shopImage ? `http://localhost:5000${data.shopImage}` : '');
+        setShopImagePreview(data.shopImage ? `${API_BASE.replace('/api', '')}${data.shopImage}` : '');
       }
     } catch (err) {
       console.error('Failed to fetch profile:', err);
@@ -330,7 +330,7 @@ function App() {
       price: item.price,
       isOutOfStock: item.isOutOfStock
     });
-    setMedImagePreview(item.medicineImage ? `http://localhost:5000${item.medicineImage}` : '');
+    setMedImagePreview(item.medicineImage ? `${API_BASE.replace('/api', '')}${item.medicineImage}` : '');
     setMedImageFile(null);
     setIsModalOpen(true);
   };
@@ -749,7 +749,7 @@ function App() {
                                 <td>
                                   {item.medicineImage ? (
                                     <img 
-                                      src={`http://localhost:5000${item.medicineImage}`} 
+                                      src={`${API_BASE.replace('/api', '')}${item.medicineImage}`} 
                                       alt={item.medicineName} 
                                       style={{ width: '44px', height: '44px', borderRadius: 'var(--radius-sm)', objectFit: 'cover' }}
                                     />

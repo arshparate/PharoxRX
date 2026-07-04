@@ -31,12 +31,30 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: err.message || 'Something broke on the server!' });
 });
 
+const https = require('https');
+
+// Keep-alive scheduler to prevent Render free tier from sleeping
+const startKeepAlive = () => {
+  const url = 'https://pharoxrx.onrender.com/';
+  console.log(`[Keep-Alive] Initializing self-ping scheduler for: ${url}`);
+  
+  // Ping every 10 minutes (600,000 ms)
+  setInterval(() => {
+    https.get(url, (res) => {
+      console.log(`[Keep-Alive] Self-ping successful. Status: ${res.statusCode}`);
+    }).on('error', (err) => {
+      console.error('[Keep-Alive] Self-ping failed:', err.message);
+    });
+  }, 600000); 
+};
+
 // Connect to MongoDB
 mongoose.connect(MONGODB_URI)
   .then(() => {
     console.log('Successfully connected to MongoDB.');
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
+      startKeepAlive();
     });
   })
   .catch(err => {

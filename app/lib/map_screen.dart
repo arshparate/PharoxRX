@@ -91,9 +91,9 @@ class _MapScreenState extends State<MapScreen> {
                 circles: [
                   CircleMarker(
                     point: LatLng(widget.userLat, widget.userLng),
-                    color: theme.primaryColor.withOpacity(0.08),
-                    borderColor: theme.primaryColor,
-                    borderStrokeWidth: 1.5,
+                    color: theme.primaryColor.withOpacity(0.15),
+                    borderColor: theme.primaryColor.withOpacity(0.6),
+                    borderStrokeWidth: 2.0,
                     useRadiusInMeter: true,
                     radius: widget.radiusInKm * 1000,
                   ),
@@ -328,6 +328,38 @@ class _MapScreenState extends State<MapScreen> {
                     ],
                   ),
                 ),
+              ),
+            ),
+            // 3. ZOOM BUTTON CONTROLS
+            Positioned(
+              top: 20,
+              right: 16,
+              child: Column(
+                children: [
+                  FloatingActionButton(
+                    heroTag: 'zoom_in',
+                    mini: true,
+                    backgroundColor: theme.cardTheme.color ?? theme.colorScheme.surface,
+                    foregroundColor: theme.primaryColor,
+                    onPressed: () {
+                      final currentZoom = _mapController.camera.zoom;
+                      _mapController.move(_mapController.camera.center, currentZoom + 1.0);
+                    },
+                    child: const Icon(Icons.add),
+                  ),
+                  const SizedBox(height: 8),
+                  FloatingActionButton(
+                    heroTag: 'zoom_out',
+                    mini: true,
+                    backgroundColor: theme.cardTheme.color ?? theme.colorScheme.surface,
+                    foregroundColor: theme.primaryColor,
+                    onPressed: () {
+                      final currentZoom = _mapController.camera.zoom;
+                      _mapController.move(_mapController.camera.center, currentZoom - 1.0);
+                    },
+                    child: const Icon(Icons.remove),
+                  ),
+                ],
               ),
             ),
         ],
